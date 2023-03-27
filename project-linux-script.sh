@@ -13,17 +13,27 @@ groupadd GRP_SEC
 
 echo "criando usuaários..."
 
-useradd roberto -m -s /bin/bash -p $(openssl passwd senha123) -G GRP_ADM
-useradd ana -m -s /bin/bash -p $(openssl passwd senha123) -G GRP_ADM
-useradd rosa -m -s /bin/bash -p $(openssl passwd senha123) -G GRP_ADM
+useradd roberto -m -c "Administrador" -s /bin/bash -p $(openssl passwd senha123) -G GRP_ADM
+passwd roberto -e
+useradd ana -m -c "Administrador" -s /bin/bash -p $(openssl passwd senha123) -G GRP_ADM
+passwd ana -e
+useradd rosa -m -c "Administrador" -s /bin/bash -p $(openssl passwd senha123) -G GRP_ADM
+passwd rosa -e
 
-useradd max -m -s /bin/bash -p $(openssl passwd senha123) -G GRP_VEN
-useradd paul -m -s /bin/bash -p $(openssl passwd senha123) -G GRP_VEN
-useradd cesar -m -s /bin/bash -p $(openssl passwd senha123) -G GRP_VEN
+useradd max -m -c "Vendedor" -s /bin/bash -p $(openssl passwd senha123) -G GRP_VEN
+passwd max -e
+useradd paul -m -c "Vendedor" -s /bin/bash -p $(openssl passwd senha123) -G GRP_VEN
+passwd paul -e
+useradd cesar -m -c "Vendedor" -s /bin/bash -p $(openssl passwd senha123) -G GRP_VEN
+passwd cesar -e
 
-useradd clara -m -s /bin/bash -p $(openssl passwd Senha123) -G GRP_SEC
-useradd abdon -m -s /bin/bash -p $(openssl passwd Senha123) -G GRP_SEC
-useradd ozzy -m -s /bin/bash -p $(openssl passwd Senha123) -G GRP_SEC
+
+useradd clara -m -c "Segurança" -s /bin/bash -p $(openssl passwd Senha123) -G GRP_SEC
+passwd clara -e
+useradd abdon -m -c "Segurança" -s /bin/bash -p $(openssl passwd Senha123) -G GRP_SEC
+passwd abdon -e
+useradd ozzy -m -c "Segurança" -s /bin/bash -p $(openssl passwd Senha123) -G GRP_SEC
+passwd ozzy -e
 
 echo "Especificando permissões dos diretórios..."
 chown root:GRP_ADM /adm
